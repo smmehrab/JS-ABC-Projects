@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event Count Down</title>
+    <style type="text/css">
+        body {
+            background: #f6f6f6;
+        }
+        
+        .countDownContainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            text-align: center;
+            background: #ddd;
+            border: 1px solid #999;
+            padding: 10px;
+            box-shadow: 0 0 5px 3px #ccc;
+        }
+        
+        .info {
+            font-size: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="countDownContainer">
+        <tr class="info">
+            <td colspan="4">
+                Event Count Down
+            </td>
+        </tr>
+
+        <tr class="info">
+            <td id="days">120</td>
+            <td id="hours">4</td>
+            <td id="minutes">56</td>
+            <td id="seconds">45</td>
+        </tr>
+
+        <tr>
+            <td>Days</td>
+            <td>Hours</td>
+            <td>Minutes</td>
+            <td>Seconds</td>
+        </tr>
+    </table>
+
+    <script type="text/javascript">
+        function countDown() {
+            var now = new Date();
+            //var now = new Date(millseconds);
+            //var now = new Date(dateString);
+            var eventDate = new Date(2020, 0, 29);
+
+            var currentTime = now.getTime();
+            var eventTime = eventDate.getTime();
+
+            var remTime = eventTime - currentTime;
+
+            var seconds = Math.floor(remTime / 1000);
+
+            console.log(seconds);
+
+            var minutes = Math.floor(seconds / 60);
+
+            console.log(minutes);
+
+            var hours = Math.floor(minutes / 60);
+
+            console.log(hours);
+
+            var days = Math.floor(hours / 24);
+
+            console.log(days);
+
+            hours %= 24;
+            minutes %= 60;
+            seconds %= 60;
+
+            hours = (hours < 10) ? "0" + hours : hours;
+            minutes = (minutes < 10) ? "0" + minutes : minutes;
+            seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("days").textContent = days;
+
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("hours").textContent = hours;
+
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("minutes").textContent = minutes;
+
+            document.getElementById("seconds").innerText = seconds;
+            document.getElementById("seconds").textContent = seconds;
+
+            setTimeout(countDown, 1000);
+        }
+
+        countDown();
+    </script>
+</body>
+
+</html>
